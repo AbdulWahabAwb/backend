@@ -8,9 +8,7 @@ const dbConfig = {
   port: parseInt(process.env.DB_PORT) || 5432,
 };
 
-// Only include password if it's explicitly set in .env
-// If DB_PASSWORD is not set, omit it (works for trust/no-password auth)
-// If DB_PASSWORD is set to empty string, use empty string
+
 if (process.env.DB_PASSWORD !== undefined && process.env.DB_PASSWORD !== null) {
   dbConfig.password = String(process.env.DB_PASSWORD);
   console.log('Password:', dbConfig.password);

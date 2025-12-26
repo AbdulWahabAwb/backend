@@ -29,16 +29,16 @@ async function initializeDatabase() {
       )
     `);
 
-    // // Create comments table
-    // await pool.query(`
-    //   CREATE TABLE IF NOT EXISTS comments (
-    //     id SERIAL PRIMARY KEY,
-    //     post_id INTEGER NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
-    //     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    //     text TEXT NOT NULL,
-    //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    //   )
-    // `);
+    // Create comments table
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS comments (
+        id SERIAL PRIMARY KEY,
+        post_id INTEGER NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        text TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
 
     console.log('Database tables initialized successfully');
   } catch (error) {
